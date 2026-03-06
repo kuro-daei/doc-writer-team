@@ -4,14 +4,14 @@ argument-hint: <topic> [--output-dir <path>]
 allowed-tools: ["Agent"]
 ---
 
-# notion-writer:create
+# doc-writer:create
 
 Research a topic and create a set of structured Markdown documents using a team of specialized agents.
 
 ## Usage
 
 ```
-/notion-writer:create <topic> [--output-dir <path>]
+/doc-writer:create <topic> [--output-dir <path>]
 ```
 
 ## Arguments

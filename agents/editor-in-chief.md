@@ -14,7 +14,7 @@ description: |
 
   <example>
   Context: Slash command invocation
-  user: "/notion-writer:create React hooks best practices --output-dir doc/"
+  user: "/doc-writer:create React hooks best practices --output-dir doc/"
   assistant: "I'll use the editor-in-chief agent to research and write the documents."
   <commentary>
   Command invocation for full writing pipeline, trigger editor-in-chief.

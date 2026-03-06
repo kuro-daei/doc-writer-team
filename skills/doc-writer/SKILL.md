@@ -1,10 +1,10 @@
 ---
-name: notion-writer
-description: This skill should be used when the user asks to research a topic and create documentation, generate a document set, create markdown files about a topic, use notion-writer, or says phrases like "ドキュメントを作って", "調査してまとめて", "doc/以下にドキュメントを作りたい", "write documentation for", "create docs about", "notion-writerで〇〇をまとめて". Activates the full research-outline-write-review-save pipeline.
+name: doc-writer
+description: This skill should be used when the user asks to research a topic and create documentation, generate a document set, create markdown files about a topic, use doc-writer, or says phrases like "ドキュメントを作って", "調査してまとめて", "doc/以下にドキュメントを作りたい", "write documentation for", "create docs about", "doc-writerで〇〇をまとめて". Activates the full research-outline-write-review-save pipeline.
 version: 0.1.0
 ---
 
-# Notion Writer Team
+# Doc Writer Team
 
 This skill activates when the user wants to research a topic and create a structured set of Markdown documents.
 
@@ -12,7 +12,7 @@ This skill activates when the user wants to research a topic and create a struct
 
 Use this skill when the user:
 - Asks to research a topic and create documentation or markdown files
-- Mentions "notion-writer" explicitly
+- Mentions "doc-writer" explicitly
 - Says phrases like "ドキュメントを作って", "調査してまとめて", "doc/以下に作りたい", "write docs about", "create documentation for"
 
 ## How to Respond

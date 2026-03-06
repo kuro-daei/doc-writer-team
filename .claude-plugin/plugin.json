@@ -1,5 +1,5 @@
 {
-  "name": "notion-writer-team",
+  "name": "doc-writer-team",
   "description": "A team of AI agents that research topics and create structured Markdown document sets. Led by an Editor-in-Chief who orchestrates Deep Researcher, Technical Writer, and Reviewer agents.",
   "version": "0.1.0",
   "author": {

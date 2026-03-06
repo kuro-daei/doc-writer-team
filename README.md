@@ -1,4 +1,4 @@
-# notion-writer-team
+# doc-writer-team
 
 A Claude Code plugin that uses a team of specialized AI agents to research topics and create structured Markdown document sets.
 
@@ -27,11 +27,11 @@ User → Editor-in-Chief → Deep Researcher (research)
 ### Slash Command
 
 ```bash
-/notion-writer:create <topic> [--output-dir <path>]
+/doc-writer:create <topic> [--output-dir <path>]
 
 # Examples:
-/notion-writer:create "Claude Code plugin development"
-/notion-writer:create "Rust async programming" --output-dir docs/rust-async/
+/doc-writer:create "Claude Code plugin development"
+/doc-writer:create "Rust async programming" --output-dir docs/rust-async/
 ```
 
 ### Conversation
@@ -39,7 +39,7 @@ User → Editor-in-Chief → Deep Researcher (research)
 Just tell Claude:
 - "〇〇についてドキュメントを作って"
 - "〇〇を調査してdoc/以下にまとめて"
-- "notion-writerで〇〇のドキュメントセットを作りたい"
+- "doc-writerで〇〇のドキュメントセットを作りたい"
 - "Write documentation about [topic]"
 
 ## How It Works
