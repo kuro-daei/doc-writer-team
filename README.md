@@ -1,24 +1,25 @@
 # notion-writer-team
 
-A Claude Code plugin that uses a team of specialized AI agents to research topics and write high-quality documents to Notion.
+A Claude Code plugin that uses a team of specialized AI agents to research topics and create structured Markdown document sets.
 
 ## Agents
 
 | Agent | Role |
 |---|---|
-| **Editor-in-Chief** | Orchestrates the team, makes editorial decisions, publishes to Notion |
+| **Editor-in-Chief** | Orchestrates the team, proposes document structure, saves final files |
 | **Deep Researcher** | Gathers comprehensive information via web search |
-| **Technical Writer** | Drafts and revises documents based on research |
-| **Reviewer** | Reviews drafts for quality, accuracy, and clarity |
+| **Technical Writer** | Drafts and revises individual documents based on research |
+| **Reviewer** | Reviews document set for quality, accuracy, and consistency |
 
 ## Workflow
 
 ```
 User → Editor-in-Chief → Deep Researcher (research)
-                       → Technical Writer (draft)
-                       → Reviewer (feedback)
+                       → [proposes doc structure, waits for user approval]
+                       → Technical Writer (draft each file)
+                       → Reviewer (feedback on full set)
                        → Technical Writer (revise)
-                       → Notion (publish)
+                       → Save to doc/ directory
 ```
 
 ## Usage
@@ -26,26 +27,38 @@ User → Editor-in-Chief → Deep Researcher (research)
 ### Slash Command
 
 ```bash
-/notion-writer:create <topic> --page-id <notion-page-id>
+/notion-writer:create <topic> [--output-dir <path>]
 
-# Example:
-/notion-writer:create "Claude Code plugin development guide" --page-id abc123def456
+# Examples:
+/notion-writer:create "Claude Code plugin development"
+/notion-writer:create "Rust async programming" --output-dir docs/rust-async/
 ```
 
 ### Conversation
 
 Just tell Claude:
-- "Notionに〇〇について記事を書いて"
-- "Write an article about [topic] to Notion page [page-id]"
-- "notion-writerで〇〇をまとめて"
+- "〇〇についてドキュメントを作って"
+- "〇〇を調査してdoc/以下にまとめて"
+- "notion-writerで〇〇のドキュメントセットを作りたい"
+- "Write documentation about [topic]"
 
-## Finding Your Notion Page ID
+## How It Works
 
-The page ID is the 32-character string in the Notion page URL:
+1. **Research**: Deep Researcher gathers information from the web
+2. **Structure proposal**: Editor-in-Chief proposes a file structure for `doc/` — you can modify it before approving
+3. **Writing**: Technical Writer creates each Markdown file
+4. **Review**: Reviewer checks the full document set
+5. **Revision**: Technical Writer addresses feedback
+6. **Save**: All files are written to the output directory
+
+## Output
+
+Documents are saved as Markdown files in the specified directory (default: `doc/`):
+
 ```
-https://notion.so/My-Page-Title-a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
+doc/
+├── index.md          # Overview and table of contents
+├── getting-started.md
+├── concepts.md
+└── ...
 ```
-
-## Requirements
-
-- Notion MCP must be connected (available as `mcp__claude_ai_Notion__*`)

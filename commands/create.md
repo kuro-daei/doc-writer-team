@@ -1,17 +1,17 @@
 ---
-description: Research a topic and write a document to Notion using the writing team
-argument-hint: <topic> --page-id <notion-page-id>
+description: Research a topic and create a structured document set under a local directory
+argument-hint: <topic> [--output-dir <path>]
 allowed-tools: ["Agent"]
 ---
 
 # notion-writer:create
 
-Write a research-backed document to Notion using a team of specialized agents.
+Research a topic and create a set of structured Markdown documents using a team of specialized agents.
 
 ## Usage
 
 ```
-/notion-writer:create <topic> --page-id <notion-page-id>
+/notion-writer:create <topic> [--output-dir <path>]
 ```
 
 ## Arguments
@@ -19,19 +19,17 @@ Write a research-backed document to Notion using a team of specialized agents.
 The user invoked this command with: $ARGUMENTS
 
 Parse `$ARGUMENTS` to extract:
-- **topic**: Everything before `--page-id` (required)
-- **page-id**: The value after `--page-id` (required)
-
-If `--page-id` is missing, ask the user: "Please provide the Notion page ID with `--page-id <id>`."
+- **topic**: Everything before `--output-dir` (required)
+- **output-dir**: The value after `--output-dir` (optional, default: `doc/`)
 
 ## Instructions
 
-Once topic and page-id are parsed, use the editor-in-chief agent to execute the full workflow:
+Once topic and output-dir are determined, use the editor-in-chief agent to execute the full workflow:
 
 ```
-Research and write a document to Notion.
+Research the topic and create a document set.
 Topic: [extracted topic]
-Notion Page ID: [extracted page-id]
+Output directory: [extracted output-dir or "doc/"]
 ```
 
-The editor-in-chief will coordinate the research, writing, review, revision, and Notion publishing pipeline.
+The editor-in-chief will coordinate the research, propose a document structure for user approval, write each document, review, revise, and save all files to the output directory.
