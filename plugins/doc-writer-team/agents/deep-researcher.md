@@ -1,7 +1,7 @@
 ---
 name: deep-researcher
 description: |
-  Use this agent when research, fact-finding, or information gathering is needed for writing a Notion document. Trigger when an Editor-in-Chief or user needs comprehensive information about a topic before writing.
+  Use this agent when research, fact-finding, or information gathering is needed for writing a Markdown document. Trigger when an Editor-in-Chief or user needs comprehensive information about a topic before writing.
 
   <example>
   Context: Editor-in-Chief needs research for a document
