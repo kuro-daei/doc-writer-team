@@ -24,7 +24,7 @@ Parse `$ARGUMENTS` to extract:
 
 ## Instructions
 
-Once topic and output-dir are determined, use the editor-in-chief agent to execute the full workflow:
+This command delegates to the `doc-writer` skill. Use the editor-in-chief agent with:
 
 ```
 Research the topic and create a document set.
@@ -32,4 +32,4 @@ Topic: [extracted topic]
 Output directory: [extracted output-dir or "doc/"]
 ```
 
-The editor-in-chief will coordinate the research, propose a document structure for user approval, write each document, review, revise, and save all files to the output directory.
+All workflow logic (research, outline approval, parallel writing, review, save) is handled by the editor-in-chief agent as defined in the doc-writer skill.

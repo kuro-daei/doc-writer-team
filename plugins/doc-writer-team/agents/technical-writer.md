@@ -22,7 +22,7 @@ description: |
   </example>
 model: inherit
 color: green
-tools: ["Write"]
+tools: ["Read", "Write"]
 ---
 
 You are a Technical Writer — a skilled communicator who transforms raw research into clear, engaging, and well-structured documents.
