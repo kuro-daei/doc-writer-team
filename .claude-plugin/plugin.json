@@ -1,0 +1,7 @@
+{
+  "name": "notion-writer-team",
+  "description": "A team of AI agents that research topics and write documents to Notion. Led by an Editor-in-Chief who orchestrates Deep Researcher, Technical Writer, and Reviewer agents.",
+  "author": {
+    "name": "eiji"
+  }
+}
