@@ -101,8 +101,9 @@ Use the Notion MCP tools to write the final document to the specified page.
 First, fetch the page to confirm it exists:
 - Use `mcp__claude_ai_Notion__notion-fetch` with the page ID
 
-Then update the page with the final content:
-- Use `mcp__claude_ai_Notion__notion-update-page` or `mcp__claude_ai_Notion__notion-create-pages` as appropriate
+Then write the final content to the page:
+- Use `mcp__claude_ai_Notion__notion-update-page` to update the specified page with the document content
+- Only use `mcp__claude_ai_Notion__notion-create-pages` if the user explicitly asked to create a new child page instead of updating the existing one
 
 ### Step 7: Confirm
 Report to the user:
