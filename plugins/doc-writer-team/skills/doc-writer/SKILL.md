@@ -1,36 +1,53 @@
 ---
 name: doc-writer
-description: This skill should be used when the user asks to research a topic and create documentation, generate a document set, create markdown files about a topic, use doc-writer, or says phrases like "ドキュメントを作って", "調査してまとめて", "doc/以下にドキュメントを作りたい", "write documentation for", "create docs about", "doc-writerで〇〇をまとめて". Activates the full research-outline-write-review-save pipeline.
+description: |
+  以下のいずれかに該当する場合にこのスキルを使う：
+  - トピックをリサーチして新しいドキュメントを作成したい（「ドキュメントを作って」「調査してまとめて」「doc/以下にドキュメントを作りたい」「write documentation for」「create docs about」「doc-writerで〇〇をまとめて」）
+  - 既存ドキュメントを大幅に編集したい（「〇〇を編集して」「章を追加して」「構成を変えて」「edit the docs」）
+  - 既存ドキュメントを校閲・改善したい（「〇〇を校閲して」「文章を見直して」「チェックして改善して」「proofread」「review the writing」）
 version: 0.1.0
 ---
 
 # Doc Writer Team
 
-This skill activates when the user wants to research a topic and create a structured set of Markdown documents.
+このスキルはユーザーがドキュメントの作成・編集・校閲を行いたいときに起動する。
 
-## When This Skill Applies
+## モード
 
-Use this skill when the user:
-- Asks to research a topic and create documentation or markdown files
-- Mentions "doc-writer" explicitly
-- Says phrases like "ドキュメントを作って", "調査してまとめて", "doc/以下に作りたい", "write docs about", "create documentation for"
+### 新規作成
+トピックを指定して新しいドキュメントセットをゼロから作成する。
 
-## How to Respond
+トリガーフレーズ: 「〇〇についてドキュメントを作って」「〇〇を調査してまとめて」「doc/以下に作りたい」「write docs about」「create documentation for」「doc-writerで〇〇をまとめて」
 
-When this skill triggers:
+### 編集
+既存ファイルに大幅な変更（章の追加・削除・構成変更）を加える。
 
-1. **Extract the topic** from the user's message.
-2. **Determine the output directory** — if not specified, use `doc/` as default. Ask if unclear:
-   > "どのディレクトリに保存しますか？（デフォルト: doc/）"
-3. **Use the editor-in-chief agent** to execute the full pipeline:
+トリガーフレーズ: 「〇〇を編集して」「〇〇に章を追加して」「〇〇の構成を変えて」「〇〇を書き直して」「edit the docs」
+
+### 校閲
+既存ファイルの文章品質（言い回し・誤字・一貫性・読みやすさ）を改善する。
+
+トリガーフレーズ: 「〇〇を校閲して」「〇〇の文章を見直して」「〇〇をチェックして改善して」「proofread」「review the writing」
+
+## 対応方法
+
+スキルが起動したら：
+
+1. **モードを判定する** — 新規作成・編集・校閲のどれか
+2. **必要情報を確認する**:
+   - 新規作成: トピックと出力ディレクトリ（不明なら確認: 「どのディレクトリに保存しますか？（デフォルト: doc/）」）
+   - 編集: 対象ファイルと編集指示（両方必要）
+   - 校閲: 対象ファイル（校閲の焦点があれば確認）
+3. **editor-in-chief エージェントに委譲する**:
    ```
-   Research the topic and create a document set.
-   Topic: [topic]
-   Output directory: [output-dir]
+   [モード]モードで作業してください。
+   対象/トピック: [topic or files]
+   指示/焦点: [instructions or focus]
+   出力先: [output-dir if applicable]
    ```
 
-## Notes
+## 注意事項
 
-- The editor-in-chief will first propose a document structure (file list with descriptions) and ask for your approval before writing
-- You can modify the proposed structure before approving
-- Final documents are saved as Markdown files in the specified directory
+- editor-in-chief が構成案または編集計画を提示するので、承認してから作業が進む（新規作成・編集モード）
+- 全モードでレビューが必ず実施される
+- 最終ファイルは指定ディレクトリ（または元の場所）に Markdown として保存される
