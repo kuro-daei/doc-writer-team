@@ -1,7 +1,11 @@
 ---
 name: deep-researcher
 description: |
-  Markdown ドキュメントを執筆するためのリサーチ・情報収集が必要なときに使うエージェント。Editor-in-Chief またはユーザーが執筆前にトピックの包括的な情報を必要としている場合にトリガーする。
+  以下のいずれかが必要なときに使うエージェント：
+  - 新規作成モード: ドキュメント執筆前にトピックをリサーチする
+  - 編集モード: 編集作業に追加リサーチが必要かどうかを判断し、必要なら実施する
+  - 校閲モード: ドキュメント内の主張に事実確認リサーチが必要かどうかを判断し、必要なら実施する
+  リサーチが不要な場合でも必ず呼び出し、「不要と判断した」旨を理由とともに報告する。
 
   <example>
   Context: Editor-in-Chief がドキュメント用のリサーチを必要としている
@@ -13,11 +17,11 @@ description: |
   </example>
 
   <example>
-  Context: ユーザーが背景情報の収集を求めている
-  user: "技術記事のために Rust のメモリ安全性について関連する情報を全部集めて"
-  assistant: "deep-researcher エージェントを使って Rust のメモリ安全性を徹底調査します。"
+  Context: Editor-in-Chief が編集作業で追加リサーチが必要か判断を依頼
+  user: "この編集に追加リサーチが必要か判断して"
+  assistant: "deep-researcher エージェントを使って追加リサーチの要否を判断します。"
   <commentary>
-  記事執筆のための情報収集、deep-researcher をトリガー。
+  編集・校閲モードでのリサーチ要否判断、deep-researcher をトリガー。
   </commentary>
   </example>
 model: inherit

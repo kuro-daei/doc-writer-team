@@ -72,8 +72,8 @@
 # 例:
 /doc-writer:create "Claude Code プラグイン開発"
 /doc-writer:create "Rust の非同期プログラミング" --output-dir docs/rust-async/
-/doc-writer:edit doc/index.md "導入セクションを追加して"
-/doc-writer:edit "doc/index.md doc/concepts.md" "全体の構成を見直して概念の章を先に持ってきて"
+/doc-writer:edit --files doc/index.md --instructions "導入セクションを追加して"
+/doc-writer:edit --files "doc/index.md doc/concepts.md" --instructions "全体の構成を見直して概念の章を先に持ってきて"
 /doc-writer:proofread doc/
 /doc-writer:proofread doc/index.md --focus "誤字と一貫性"
 ```

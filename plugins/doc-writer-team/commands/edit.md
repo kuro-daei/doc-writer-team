@@ -1,6 +1,6 @@
 ---
 description: 既存ドキュメントを指示に従って編集する（章の追加・削除・構成変更）
-argument-hint: <files> <instructions> [--output-dir <path>]
+argument-hint: --files <files> --instructions <instructions> [--output-dir <path>]
 allowed-tools: ["Agent"]
 ---
 
@@ -11,7 +11,7 @@ allowed-tools: ["Agent"]
 ## 使い方
 
 ```
-/doc-writer:edit <files> <instructions> [--output-dir <path>]
+/doc-writer:edit --files <files> --instructions <instructions> [--output-dir <path>]
 ```
 
 ## 引数
@@ -19,9 +19,11 @@ allowed-tools: ["Agent"]
 ユーザーがこのコマンドを呼び出した引数: $ARGUMENTS
 
 `$ARGUMENTS` を解析して以下を抽出する：
-- **files**: 編集対象のファイルパス（スペース区切り、またはディレクトリパス）
-- **instructions**: 編集指示（`--output-dir` の前まで）
-- **output-dir**: 保存先（任意。デフォルト: 各ファイルを上書き）
+- **--files**: 編集対象のファイルパス（スペース区切り、またはディレクトリパス）
+- **--instructions**: 編集指示（引用符で囲まれた文字列）
+- **--output-dir**: 保存先（任意。デフォルト: 各ファイルを上書き）
+
+フラグが省略された場合は、最初の引数群をファイルパス、最後の引用符付き文字列を指示として解釈する。
 
 ## 指示
 

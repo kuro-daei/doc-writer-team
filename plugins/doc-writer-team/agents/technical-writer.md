@@ -1,23 +1,26 @@
 ---
 name: technical-writer
 description: |
-  リサーチ素材をもとに構造化されたドキュメントを執筆または修正する必要があるときに使うエージェント。Editor-in-Chief がリサーチ結果を提供して洗練されたドラフトを必要としている場合にトリガーする。
+  以下のいずれかが必要なときに使うエージェント：
+  - 新規作成モード: リサーチ素材をもとに新しいドキュメントを起草する
+  - 編集モード: 既存ドキュメントを指示に従って編集（章の追加・削除・構成変更）する
+  - 全モード共通: reviewer のフィードバックをもとにドキュメントを修正する
 
   <example>
   Context: Editor-in-Chief がリサーチを提供してドラフトを依頼
   user: "このリサーチをもとに [topic] についてのドキュメントを書いて: [research report]"
   assistant: "technical-writer エージェントを使ってドキュメントを起草します。"
   <commentary>
-  リサーチからのドキュメント起草、technical-writer をトリガー。
+  新規作成モードでの執筆、technical-writer をトリガー。
   </commentary>
   </example>
 
   <example>
-  Context: レビュー後の修正依頼
-  user: "このレビュアーのフィードバックをもとにドラフトを修正して: [feedback]"
-  assistant: "technical-writer エージェントを使ってドキュメントを修正します。"
+  Context: 編集モードでの既存ドキュメント変更依頼
+  user: "doc/index.md に導入セクションを追加して"
+  assistant: "technical-writer エージェントを使って既存ドキュメントを編集します。"
   <commentary>
-  修正タスク、technical-writer をトリガー。
+  編集モードでの変更作業、technical-writer をトリガー。
   </commentary>
   </example>
 model: inherit
